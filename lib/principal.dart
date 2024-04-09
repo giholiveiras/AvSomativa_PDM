@@ -1,9 +1,11 @@
+// Importando as classes e os pacotes necessários para o funcionamento do flutter
 import 'package:flutter/material.dart';
 import 'imc.dart';
 import 'contador.dart';
 import 'usuario.dart';
 import 'produtos.dart';
 
+// Construindo a classe Principal como um StatefulWidget
 class Principal extends StatefulWidget {
   const Principal({super.key});
 
@@ -13,27 +15,38 @@ class Principal extends StatefulWidget {
 
 class _PrincipalPageState extends State<Principal> {
   @override
+  // Construindo e retornando a interface do widget
   Widget build(BuildContext context) {
+    //Retornando como Scaffold que é a base para a página
     return Scaffold(
+      // Widget que contém botão de ação
       appBar: AppBar(
         title: Text("MENU"),
         centerTitle: true,
-        backgroundColor: Colors.deepOrangeAccent,
+        backgroundColor: Colors.purpleAccent,
       ),
-
+      // Corpo principal de uma pagina
       body: SingleChildScrollView(
+        // Espaçamento interno dapágina
         padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+        // Arrumando os itens em uma coluna vertical
         child: Column(
+          // Alinhamento horizontal na coluna ocupando todo o espaço disponível
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            // Icone a ser exibido
             const Icon(
               Icons.add_business_sharp,
               size: 120.0,
-              color: Colors.deepOrangeAccent,
+              color: Colors.purpleAccent,
             ),
+
+            // Texto exibido
             Text(
               "Aplicação Principal",
+              // ALinhamento do texto
               textAlign: TextAlign.center,
+              // Estilização do texto
               style: TextStyle(color: Colors.blueGrey, fontSize: 25.0),
             ),
             Text(
@@ -41,15 +54,22 @@ class _PrincipalPageState extends State<Principal> {
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.blueGrey, fontSize: 25.0),
             ),
+
+            // Alinhamento em coluna
             Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
+                  // Widget de botão
                   ElevatedButton(
                       child: const Text("IMC"),
+                      // função de quando o botão é pressionado
                       onPressed: () {
+                      // Navegar para uma nova tela
                         Navigator.push(
                           context,
+                          // Define a rota para a nova tela
                           MaterialPageRoute(
+                            // Retornando para a página IMC
                               builder: (context) => const Imc()),
                         );
                       }),
@@ -59,6 +79,7 @@ class _PrincipalPageState extends State<Principal> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
+                            // Retornando para a página Contador
                               builder: (context) => const Contador()),
                         );
                       }),
@@ -68,6 +89,7 @@ class _PrincipalPageState extends State<Principal> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
+                            // Retornando para a página Usuarios
                               builder: (context) => const Usuarios()),
                         );
                       }),
@@ -77,6 +99,7 @@ class _PrincipalPageState extends State<Principal> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
+                            // Retornando para a página Produtos
                               builder: (context) => const Produtos()),
                         );
                       }),

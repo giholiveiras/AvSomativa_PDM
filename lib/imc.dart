@@ -1,24 +1,32 @@
+// Importando as classes e os pacotes necessários para o funcionamento do flutter
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+// Inicializando a aplicação do flutter
 void main(){
   runApp(const Imc());
 }
 
+// Construindo a classe Imc
 class Imc extends StatelessWidget {
-  const Imc({super.key});
+  const Imc ({super.key});
 
 
   @override
+  //Retornando um widget
   Widget build(BuildContext context) {
+    // Fornecendo funcionalidades básicas para a construção de aplicativos
     return const MaterialApp(
+      // Remove o banner no modo de desenvolvimento
       debugShowCheckedModeBanner: false,
+      // Definindo "Home" como página inicial
       home: const Home(),
     );
   }
 }
-
+// Definindo a classe "Home" como StatefulWidget
 class Home extends StatefulWidget {
+  // Definindo o corpo da classe Home
   const Home({super.key});
 
 
@@ -27,10 +35,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomePageState extends State<Home> {
+  // Controlando a instancia de texto peso
   TextEditingController pesoController = new TextEditingController();
+  // Controlando a instancia de texto altura
   TextEditingController alturaController = new TextEditingController();
   String _textoInfo = "Informe seus dados";
 
+  // Limpando os campos de texto e altura
   void _limpar_Tela(){
     pesoController.text = "";
     alturaController.text = "";
@@ -38,13 +49,13 @@ class _HomePageState extends State<Home> {
       _textoInfo = "Informe seus dados";
     });
   }
-
+//calculando imc
   void _calcular_Imc(){
     setState(() {
       double peso = double.parse(pesoController.text);
       double altura = double.parse(alturaController.text);
       double imc = peso / pow ((altura/100),2);
-
+// estruturas de controle condicional
       if (imc <16.5){
         _textoInfo = "Desnutrido (${imc})";
       }
@@ -69,7 +80,7 @@ class _HomePageState extends State<Home> {
     });
   }
 
-
+// COnfigurações para exibição de texto
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +88,7 @@ class _HomePageState extends State<Home> {
 
         title: Text('Calculadora IMC'),
         centerTitle: true,
-        backgroundColor: Colors.deepOrangeAccent,
+        backgroundColor: Colors.purpleAccent,
         actions: <Widget>[
           IconButton(
               onPressed: _limpar_Tela,
